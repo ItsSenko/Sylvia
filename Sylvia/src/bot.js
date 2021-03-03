@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { RichEmbed } = require("discord.js");
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -43,25 +42,6 @@ client.on('message', message => {
             });
             message.channel.send(avatarList);
             break;
-        case'poll':
-            const Embed = new RichEmbed()
-            .setColor(0xFFC300)
-            .setTitle("discord poll")
-            .setDescription("Make a poll for other members to vote on");
-
-            if(!args[1]) {
-                message.channel.send(Embed);
-            }
-
-            let msgArgs = args.slice(1).join(" ");
-
-            message.channel.send("📋 " + "**" + msgArgs + "**").then(messageReaction => {
-                messageReaction.react("👍");
-                messageReaction.react("👎");
-                message.delete(100).catch(console.error);
-            });
-
-        break;
     }
 });
 
