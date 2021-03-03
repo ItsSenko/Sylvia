@@ -17,7 +17,7 @@ client.on('ready', () => {
 });
 
 function emoji (id) {
-    return bot.emojis.get(id).toString ();
+    return client.emojis.get(id).toString ();
 }
 
 client.on('message', message => {
