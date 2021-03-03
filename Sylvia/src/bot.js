@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { RichEmbed } = require("discord.js");
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -6,6 +7,14 @@ const { prefix, token } = require('./config.json');
 
 client.once('ready', () => {
 	console.log('Ready!');
+
+    bot.user.setPresence({
+        status: "online",  //You can show online, idle....
+        game: {
+            name: "SafeBuckle is the best :3",  //The message shown
+            type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
+        }
+    });
 });
 
 client.on('message', message => {
