@@ -1,4 +1,6 @@
 require('dotenv').config();
+const { RichEmbed } = require("discord.js");
+const bot = new Discord.Client();
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -10,7 +12,7 @@ client.once('ready', () => {
     bot.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
-            name: "SafeBuckle is the best :3",  //The message shown
+            name: "SafeBuckle is the best :3 btw lyla stop removing it you're breaking my code grrrrrr",  //The message shown
             type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
         }
     });
@@ -42,6 +44,25 @@ client.on('message', message => {
             });
             message.channel.send(avatarList);
             break;
+        case'poll':
+            const Embed = new RichEmbed()
+            .setColor(0xFFC300)
+            .setTitle("discord poll")
+            .setDescription("Make a poll for other members to vote on");
+
+            if(!args[1]) {
+                message.channel.send(Embed);
+            }
+
+            let msgArgs = args.slice(1).join(" ");
+
+            message.channel.send("📋 " + "**" + msgArgs + "**").then(messageReaction => {
+                messageReaction.react("👍");
+                messageReaction.react("👎");
+                message.delete(100).catch(console.error);
+            });
+
+        break;
     }
 });
 
