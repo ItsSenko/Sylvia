@@ -19,6 +19,9 @@ client.on('message', message => {
             message.channel.send('Same :flushed:');
             break;
         case 'kick':
+            if (!message.mentions.users.size){
+                return message.reply('you must tag the person youou wish to kick');
+            }
             const taggedUser = message.mentions.users.first();
             message.channel.send(`You really wanted to kick: ${taggedUser.username}`);
             break;
