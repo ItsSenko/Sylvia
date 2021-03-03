@@ -16,6 +16,10 @@ client.on('ready', () => {
     });
 });
 
+function emoji (id) {
+    return bot.emojis.get(id).toString ();
+}
+
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
@@ -41,6 +45,9 @@ client.on('message', message => {
                 return `${user.username}'s avi: <${user.displayAvatarURL({format: "png", dynamic: true})}>`;
             });
             message.channel.send(avatarList);
+            break;
+        case 'lyladumb':
+            message.channel.send(emoji("761258333625122897"));
             break;
     }
 });
