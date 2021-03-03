@@ -1,14 +1,13 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const bot = new Discord.Client();
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
 client.once('ready', () => {
 	console.log('Ready!');
 
-    bot.user.setPresence({
+    client.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
             name: "SafeBuckle is the best :3 btw lyla stop removing it you're breaking my code grrrrrr",  //The message shown
