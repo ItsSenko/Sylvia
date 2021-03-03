@@ -13,7 +13,12 @@ client.on('message', message => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
-
+    switch (args[0]) {
+        case 'help':
+            message.channel.send('fuck off');
+            break;
+    }
+    
 	if (message.content === `${prefix}horny`) {
         message.channel.send('Same :flushed:');
 
