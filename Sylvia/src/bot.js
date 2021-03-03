@@ -10,7 +10,7 @@ client.on("ready", () =>{
         status: "online",  // You can show online, idle... Do not disturb is dnd
         game: {
             name: "test",  // The message shown
-            type: "PLAYING" // PLAYING, WATCHING, LISTENING, STREAMING,
+            type: "LISTENING" // PLAYING, WATCHING, LISTENING, STREAMING,
         }
     });
  });
