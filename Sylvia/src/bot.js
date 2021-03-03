@@ -4,17 +4,16 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
-client.on('ready', () => {
-	console.log('Ready!');
-
+client.on("ready", () =>{
+    console.log(`Logged in as ${client.user.tag}!`);
     client.user.setPresence({
-        status: "idle",  //You can show online, idle....
+        status: "online",  // You can show online, idle... Do not disturb is dnd
         game: {
-            name: "Young Midoria this bot sucks ass",
-            type: "PLAYING"
+            name: "test",  // The message shown
+            type: "PLAYING" // PLAYING, WATCHING, LISTENING, STREAMING,
         }
     });
-});
+ });
 
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
