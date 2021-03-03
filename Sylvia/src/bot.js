@@ -10,7 +10,7 @@ client.on("ready", () =>{
         status: "online",  // You can show online, idle... Do not disturb is dnd
     });
 
-    client.user.setActivity('Young Midoria tell lyla to thank SafeBuckle later :3')
+    client.user.setActivity('Young Midoria tell lyla to thank SafeBuckle later :3') // Changes the current playing status of the bot
  });
 
 client.on('message', message => {
