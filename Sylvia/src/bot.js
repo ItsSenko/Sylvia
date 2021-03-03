@@ -9,6 +9,10 @@ client.on('ready', () => {
 
     client.user.setPresence({
         status: "idle",  //You can show online, idle....
+        game: {
+            name: "Young Midoria this bot sucks ass",
+            type: "PLAYING"
+        }
     });
 });
 
@@ -37,6 +41,9 @@ client.on('message', message => {
                 return `${user.username}'s avi: <${user.displayAvatarURL({format: "png", dynamic: true})}>`;
             });
             message.channel.send(avatarList);
+            break;
+        case 'watashi_ga_kita':
+            message.channel.send("Young Midoria this bot sucks ass");
             break;
     }
 });
