@@ -7,10 +7,10 @@ const { prefix, token } = require('./config.json');
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setPresence({
-        status: "dnd",//can be set to "online","idle","dnd", and "invisible"
+        status: "dnd",// can be set to "online","idle","dnd", and "invisible"
         activity: {
           name: "Lyla Lofi♡",
-          type: "LISTENING"//can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
+          type: "LISTENING"// can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
         }
       });
  });
@@ -18,7 +18,7 @@ client.on("ready", () =>{
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
-    switch (args[0]) {
+    switch (args[0]) { // switch case checking what the first word after the prefix is used.
         case 'help':
             message.channel.send('fuck off');
             break
@@ -33,13 +33,15 @@ client.on('message', message => {
             message.channel.send(`You really wanted to kick: ${taggedUser.username}`);
             break;
         case 'avatar':
-            if (!message.mentions.users.size){
-                return message.channel.send(`Your avi: <${message.author.displayAvatarURL({ format: "png", dynamic: true})}>`); 
-            }
-                const avatarList = message.mentions.users.map(user => {
-                return `${user.username}'s avi: <${user.displayAvatarURL({format: "png", dynamic: true})}>`;
-            });
-            message.channel.send(avatarList);
+            const member = message.mentions.members.first() || message.member;
+
+            message.channel.send(
+                new MessageEmbed()
+                    .setTitle(`${member.user.tag}'s avatar`)
+                    .setImage(member.user.displayAvatarURL({ dynamic: true, size: 2048}))
+                    .setColor("RANDOM")
+            )
+
             break;
         case 'watashi_ga_kita':
             message.channel.send("Young Midoria this bot sucks ass");
