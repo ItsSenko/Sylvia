@@ -7,10 +7,12 @@ const { prefix, token } = require('./config.json');
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setPresence({
-        status: "online",  // You can show online, idle... Do not disturb is dnd
-    });
-
-    client.user.setActivity('Young Midoria tell lyla to thank SafeBuckle later :3') // Changes the current playing status of the bot
+        status: "dnd",//can be set to "online","idle","dnd", and "invisible"
+        activity: {
+          name: "Lyla Lofi♡",
+          type: "LISTENING"//can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
+        }
+      });
  });
 
 client.on('message', message => {
@@ -41,6 +43,9 @@ client.on('message', message => {
             break;
         case 'watashi_ga_kita':
             message.channel.send("Young Midoria this bot sucks ass");
+            break;
+        case 'twitch':
+            message.channel.send("https://twitch.tv/AzuVR");
             break;
     }
 });

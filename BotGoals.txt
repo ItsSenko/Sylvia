@@ -1,0 +1,20 @@
+- moderation
+- music
+- server stats
+- command to change status
+- reaction commands
+- lockdown
+- welcome embed
+- react for roles
+- giveaway commands
+- help(made last)
+- make customizable for mutiple servers (I intend to release a public version i kinda want to get that verified devolper badge and also anyone else who works on the bot gets the badge too)
+- discord logs for #logs channel (trust me, very helpful for tricky situations)
+- maybe some minigames
+- bumping rewards
+- lewd commands(maybe)
+- memes
+
+	Feel free to add goals here ^w^
+
+
