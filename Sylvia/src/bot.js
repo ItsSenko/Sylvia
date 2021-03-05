@@ -4,9 +4,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
-var StatusChangeStatus = online;
-var StatusChangeText = text;
-var StatusChangeType = PLAYING;
+var StatusChangeStatus = "online";
+var StatusChangeText = "text";
+var StatusChangeType = "PLAYING";
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
