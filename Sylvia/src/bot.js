@@ -11,7 +11,7 @@ client.on("ready", () =>{
         status: 'idle',// can be set to "online","idle","dnd", and "invisible"
         activity: {
           name: 'add text',
-          type: "STREAMING" // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
+          type: "LISTENING" // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
         }
       });
  });
@@ -55,46 +55,38 @@ client.on('message', message => {
                 switch(args[2]) {
                     case 'PLAYING':
                         message.channel.send("type has been changed to PLAYING");
-                        client.user.setActivity({ type: 'PLAYING'});
+                        client.user.setActivity({type: "PLAYING"});
                         break;
                     case 'STREAMING':
                         message.channel.send("type has been changed to STREAMING");
-                        client.user.setActivity({ type: 'STREAMING'});
+                        client.user.setActivity({type: "STREAMING"});
                         break;
                     case 'LISTENING':
                         message.channel.send("type has been changed to LISTENING");
-                        client.user.setActivity({ type: 'LISTENING'});
+                        client.user.setActivity({type: "LISTENING"});
                         break;
                     case 'WATCHING':
                         message.channel.send("type has been changed to WATCHING");
-                        client.user.setActivity({ type: 'WATCHING'});
+                        client.user.setActivity({type: "WATCHING"});
                         break;
                 }
             } else if(args[1] === 'status'){
                 switch(args[2]) {
                     case 'online':
                         message.channel.send("status has been changed to online");
-                        client.user.setPresence({
-                            status: 'online'
-                        });
+                        client.user.setStatus("online");
                         break;
                     case 'idle':
                         message.channel.send("status has been changed to idle");
-                        client.user.setPresence({
-                            status: 'idle'
-                        });
+                        client.user.setStatus("idle");
                         break;
                     case 'dnd':
                         message.channel.send("status has been changed to dnd");
-                        client.user.setPresence({
-                            status: 'dnd'
-                        });
+                        client.user.setStatus("dnd");
                         break;
                     case 'invisible':
                         message.channel.send("status has been changed to invisible");
-                        client.user.setPresence({
-                            status: 'invisible'
-                        });
+                        client.user.setStatus("invisible");
                         break;
             }
         } else if (args[1] === 'name'){
