@@ -4,6 +4,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
+
+//sfhagfjsa
 var StatusChangeStatus = "online";
 var StatusChangeText = "text";
 var StatusChangeType = "PLAYING";
