@@ -54,20 +54,16 @@ client.on('message', message => {
             if(args[1] === 'type'){
                 switch(args[2]) {
                     case 'PLAYING':
-                        message.channel.send("type has been changed to PLAYING");
-                        client.user.setActivity({type: "PLAYING"});
-                        break;
-                    case 'STREAMING':
-                        message.channel.send("type has been changed to STREAMING");
-                        client.user.setActivity({type: "STREAMING"});
+                        message.channel.send("type has been changed to PLAYING"); //1
+                        bot.user.setActivity({type: 1});
                         break;
                     case 'LISTENING':
-                        message.channel.send("type has been changed to LISTENING");
-                        client.user.setActivity({type: "LISTENING"});
+                        message.channel.send("type has been changed to LISTENING"); //2
+                        bot.user.setActivity({type: 2});
                         break;
                     case 'WATCHING':
-                        message.channel.send("type has been changed to WATCHING");
-                        client.user.setActivity({type: "WATCHING"});
+                        message.channel.send("type has been changed to WATCHING"); //3
+                        bot.user.setActivity({type: 3});
                         break;
                 }
             } else if(args[1] === 'status'){
