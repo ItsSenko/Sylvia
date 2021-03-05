@@ -106,8 +106,11 @@ client.on('message', message => {
                         break;
             }
         } else if (args[1] === 'name'){
-            var text_content = message.content.split(" ").slice(1).join(' ')
+            var text_content = message.content.split(" ").slice(2).join(' ')
             message.channel.send("name has been changed to " + text_content);
+            client.user.setPresence({
+                name: text_content
+            });
         }
     }
 });
