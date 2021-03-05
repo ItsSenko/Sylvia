@@ -61,12 +61,21 @@ client.on('message', message => {
                         break;
                     case 'STREAMING':
                         message.channel.send("type has been changed to STREAMING");
+                        client.user.setPresence({
+                            type: 'STREAMING'
+                        });
                         break;
                     case 'LISTENING':
                         message.channel.send("type has been changed to LISTENING");
+                        client.user.setPresence({
+                            type: 'LISTENING'
+                        });
                         break;
                     case 'WATCHING':
                         message.channel.send("type has been changed to WATCHING");
+                        client.user.setPresence({
+                            type: 'WATCHING'
+                        });
                         break;
                 }
             } else if(args[1] === 'status'){
@@ -95,7 +104,11 @@ client.on('message', message => {
                             status: 'invisible'
                         });
                         break;
-            } 
+            }
+        } else if (args[1] === 'name'){
+            const usermsg = message.content.split(' ');
+            message.channel.send(usermsg.slice(0).join(' '));
+            break;
         }
     }
 });
