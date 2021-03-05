@@ -4,19 +4,24 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
+var StatusChangeStatus = online;
+var StatusChangeText = text;
+var StatusChangeType = PLAYING;
+
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setPresence({
-        status: "dnd",// can be set to "online","idle","dnd", and "invisible"
-        activity: {
-          name: "Lyla Lofi♡",
-          type: "LISTENING"// can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
-        }
-      });
  });
 
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
+
+    client.user.setPresence({
+        status: StatusChangeStatus,// can be set to "online","idle","dnd", and "invisible"
+        activity: {
+          name: StatusChangeText,
+          type: StatusChangeType // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
+        }
+      });
 
     switch (args[0]) { // switch case checking what the first word after the prefix is used.
         case 'help':
@@ -49,6 +54,40 @@ client.on('message', message => {
         case 'twitch':
             message.channel.send("https://twitch.tv/AzuVR");
             break;
+        case 'status':
+            if(args[1] == type){
+                switch(args[2]) {
+                    case 'PLAYING':
+                        StatusChangeType = PLAYING;
+                        break;
+                    case 'STREAMING':
+                        StatusChangeType = STREAMING;
+                        break;
+                    case 'LISTENING':
+                        StatusChangeType = ISTENING;
+                        break;
+                    case 'WATCHING':
+                        StatusChangeType = WATCHING;
+                        break;
+                }
+            } else if(args[1] == status){
+                switch(args[2]) {
+                    case 'online':
+                        StatusChangeStatus = online;
+                        break;
+                    case 'idle':
+                        StatusChangeStatus = idle;
+                        break;
+                    case 'dnd':
+                        StatusChangeStatus = dnd;
+                        break;
+                    case 'invisible':
+                        StatusChangeStatus = invisible;
+                        break;
+            } 
+        } else{
+            message.channel.send("Make sure to use a valid command");
+        }
     }
 });
 
