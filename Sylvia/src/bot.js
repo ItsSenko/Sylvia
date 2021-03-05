@@ -4,20 +4,14 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
 
-
-//sfhagfjsa
-var StatusChangeStatus = "online";
-var StatusChangeText = "text";
-var StatusChangeType = "PLAYING";
-
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
 
     client.user.setPresence({
-        status: StatusChangeStatus,// can be set to "online","idle","dnd", and "invisible"
+        status: 'idle',// can be set to "online","idle","dnd", and "invisible"
         activity: {
-          name: StatusChangeText,
-          type: StatusChangeType // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
+          name: 'add text',
+          type: "STREAMING" // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
         }
       });
  });
@@ -60,31 +54,43 @@ client.on('message', message => {
             if(args[1] == type){
                 switch(args[2]) {
                     case 'PLAYING':
-                        StatusChangeType = "PLAYING";
+                        message.channel.send("type has been changed to PLAYING");
                         break;
                     case 'STREAMING':
-                        StatusChangeType = "STREAMING";
+                        message.channel.send("type has been changed to STREAMING");
                         break;
                     case 'LISTENING':
-                        StatusChangeType = "ISTENING";
+                        message.channel.send("type has been changed to LISTENING");
                         break;
                     case 'WATCHING':
-                        StatusChangeType = "WATCHING";
+                        message.channel.send("type has been changed to WATCHING");
                         break;
                 }
             } else if(args[1] == status){
                 switch(args[2]) {
                     case 'online':
-                        StatusChangeStatus = "online";
+                        message.channel.send("status has been changed to online");
+                        client.user.setPresence({
+                            status: 'online'
+                        });
                         break;
                     case 'idle':
-                        StatusChangeStatus = "idle";
+                        message.channel.send("status has been changed to idle");
+                        client.user.setPresence({
+                            status: 'idle'
+                        });
                         break;
                     case 'dnd':
-                        StatusChangeStatus = "dnd";
+                        message.channel.send("status has been changed to dnd");
+                        client.user.setPresence({
+                            status: 'dnd'
+                        });
                         break;
                     case 'invisible':
-                        StatusChangeStatus = "invisible";
+                        message.channel.send("status has been changed to invisible");
+                        client.user.setPresence({
+                            status: 'invisible'
+                        });
                         break;
             } 
         }
