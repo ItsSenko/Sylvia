@@ -106,9 +106,8 @@ client.on('message', message => {
                         break;
             }
         } else if (args[1] === 'name'){
-            const usermsg = message.content.split(' ');
-            message.channel.send(usermsg.slice(0).join(' '));
-            break;
+            var text_content = message.content.split(" ").slice(1).join(' ')
+            message.channel.send("name has been changed to " + text_content);
         }
     }
 });
