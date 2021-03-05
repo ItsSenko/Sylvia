@@ -60,35 +60,33 @@ client.on('message', message => {
             if(args[1] == type){
                 switch(args[2]) {
                     case 'PLAYING':
-                        StatusChangeType = PLAYING;
+                        StatusChangeType = "PLAYING";
                         break;
                     case 'STREAMING':
-                        StatusChangeType = STREAMING;
+                        StatusChangeType = "STREAMING";
                         break;
                     case 'LISTENING':
-                        StatusChangeType = ISTENING;
+                        StatusChangeType = "ISTENING";
                         break;
                     case 'WATCHING':
-                        StatusChangeType = WATCHING;
+                        StatusChangeType = "WATCHING";
                         break;
                 }
             } else if(args[1] == status){
                 switch(args[2]) {
                     case 'online':
-                        StatusChangeStatus = online;
+                        StatusChangeStatus = "online";
                         break;
                     case 'idle':
-                        StatusChangeStatus = idle;
+                        StatusChangeStatus = "idle";
                         break;
                     case 'dnd':
-                        StatusChangeStatus = dnd;
+                        StatusChangeStatus = "dnd";
                         break;
                     case 'invisible':
-                        StatusChangeStatus = invisible;
+                        StatusChangeStatus = "invisible";
                         break;
             } 
-        } else{
-            message.channel.send("Make sure to use a valid command");
         }
     }
 });
