@@ -50,23 +50,8 @@ client.on('message', message => {
         case 'twitch':
             message.channel.send("https://twitch.tv/AzuVR");
             break;
-        case 'status':
-            if(args[1] === 'type'){
-                switch(args[2]) {
-                    case 'PLAYING':
-                        message.channel.send("type has been changed to PLAYING"); //1
-                        client.user.setActivity({type: 1});
-                        break;
-                    case 'LISTENING':
-                        message.channel.send("type has been changed to LISTENING"); //2
-                        clien.user.setActivity({type: 2});
-                        break;
-                    case 'WATCHING':
-                        message.channel.send("type has been changed to WATCHING"); //3
-                        clien.user.setActivity({type: 3});
-                        break;
-                }
-            } else if(args[1] === 'status'){
+        case 'status': 
+            if(args[1] === 'status'){
                 switch(args[2]) {
                     case 'online':
                         message.channel.send("status has been changed to online");
