@@ -12,10 +12,6 @@ var StatusChangeType = "PLAYING";
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
- });
-
-client.on('message', message => {
-    let args = message.content.substring(prefix.length).split(" ");
 
     client.user.setPresence({
         status: StatusChangeStatus,// can be set to "online","idle","dnd", and "invisible"
@@ -24,6 +20,10 @@ client.on('message', message => {
           type: StatusChangeType // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
         }
       });
+ });
+
+client.on('message', message => {
+    let args = message.content.substring(prefix.length).split(" ");
 
     switch (args[0]) { // switch case checking what the first word after the prefix is used.
         case 'help':
