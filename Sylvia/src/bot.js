@@ -20,6 +20,14 @@ client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
     switch (args[0]) { // switch case checking what the first word after the prefix is used.
+        case 'lock':
+            if (message.channel.permissionsFor('816420654043758652').has("SEND_MESSAGES", true)){
+                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {  SEND_MESSAGES: false});
+                return message.channel.send('locked');
+            }
+            else
+                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
+                return message.channel.send('unlocked');
         case 'help':
             message.channel.send('fuck off');
             break
@@ -75,16 +83,6 @@ client.on('message', message => {
                     message.channel.send("name has been changed to " + text_content);
                     return client.user.setActivity(text_content);
                 }
-        case 'lock':
-            if (message.channel.permissionsFor('816420654043758652').has("SEND_MESSAGES", true)){
-                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {  SEND_MESSAGES: false});
-                return message.channel.send('locked');
-            }
-            else
-                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
-                return message.channel.send('unlocked');
-            
-
     }
 });
 
