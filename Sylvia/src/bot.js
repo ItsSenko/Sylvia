@@ -8,9 +8,9 @@ client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
 
     client.user.setPresence({
-        status: 'idle',// can be set to "online","idle","dnd", and "invisible"
+        status: 'dnd',// can be set to "online","idle","dnd", and "invisible"
         activity: {
-          name: 'add text',
+          name: 'Lyla Lofi♡',
           type: "LISTENING" // can be set to "PLAYING","STREAMING","LISTENING", and "WATCHING"
         }
       });
@@ -37,7 +37,7 @@ client.on('message', message => {
             const member = message.mentions.members.first() || message.member;
 
             message.channel.send(
-                new MessageEmbed()
+                new Discord.MessageEmbed()
                     .setTitle(`${member.user.tag}'s avatar`)
                     .setImage(member.user.displayAvatarURL({ dynamic: true, size: 2048}))
                     .setColor("RANDOM")
@@ -50,7 +50,7 @@ client.on('message', message => {
         case 'twitch':
             message.channel.send("https://twitch.tv/AzuVR");
             break;
-        case 'status': 
+        case 'status':
             if(args[1] === 'status'){
                 switch(args[2]) {
                     case 'online':
@@ -69,12 +69,22 @@ client.on('message', message => {
                         message.channel.send("status has been changed to invisible");
                         client.user.setStatus("invisible");
                         break;
+                }
+            }   else if (args[1] === 'name'){
+                    var text_content = message.content.split(" ").slice(2).join(' ')
+                    message.channel.send("name has been changed to " + text_content);
+                    return client.user.setActivity(text_content);
+                }
+        case 'lock':
+            if (message.channel.permissionsFor('816420654043758652').has("SEND_MESSAGES", true)){
+                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {  SEND_MESSAGES: false});
+                return message.channel.send('locked');
             }
-        } else if (args[1] === 'name'){
-            var text_content = message.content.split(" ").slice(2).join(' ')
-            message.channel.send("name has been changed to " + text_content);
-            client.user.setActivity(text_content);
-        }
+            else
+                message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
+                return message.channel.send('unlocked');
+            
+
     }
 });
 
