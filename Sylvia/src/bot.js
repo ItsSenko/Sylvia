@@ -3,6 +3,8 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
+const fs = require('fs');
+const { fileURLToPath } = require('url');
 
 client.on("ready", () =>{
     console.log(`Logged in as ${client.user.tag}!`);
@@ -15,6 +17,12 @@ client.on("ready", () =>{
         }
       });
  });
+ const commandFiles = fs.readFileSync('./commands/').filter(file => file.endsWith('js'))
+
+ for(const file of commandFiles){
+     const command = require(`./commands/${file}`)
+     client.commands.set(command.name, command);
+ }
 
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
@@ -28,6 +36,8 @@ client.on('message', message => {
             else
                 message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
                 return message.channel.send('unlocked');
+        case 'test':
+            client.command.get('test').execute(message, args, Discord, client);
         case 'help':
             message.channel.send('fuck off');
             break
