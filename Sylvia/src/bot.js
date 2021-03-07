@@ -19,6 +19,10 @@ client.on("ready", () =>{
       });
  });
 
+function test(){
+    message.channel.send("test");
+}
+
 client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
@@ -32,7 +36,7 @@ client.on('message', message => {
                 message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
                 return message.channel.send('unlocked');
         case 'test':
-            client.command.get('test').execute(message, args, Discord, client);
+            test();
         case 'help':
             message.channel.send('fuck off');
             break
