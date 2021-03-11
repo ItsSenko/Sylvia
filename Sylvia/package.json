@@ -4,7 +4,9 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "wokcommands": "^1.2.8"
   },
   "devDependencies": {},
   "scripts": {
