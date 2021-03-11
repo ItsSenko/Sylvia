@@ -7,11 +7,10 @@ const { prefix, token } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for(const file of commandFiles){
-    const command = require(`./commands/${file}`);
-
+    const command = require(`./commands${file}`);
     client.commands.set(command.name, command);
 }
 
@@ -43,7 +42,7 @@ client.on('message', message => {
                 message.channel.updateOverwrite(message.channel.guild.roles.everyone, {SEND_MESSAGES: true});
                 return message.channel.send('unlocked');
         case 'test':
-            client.commands.get('test').run(client, message, args, Discord);
+            client.commands.get('test').execute(message, args, Discord, client);
         case 'help':
             message.channel.send('fuck off');
             break
